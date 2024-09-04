@@ -12,7 +12,7 @@ async function connect(){
         console.log("database connection established...");
     }
     catch(error){
-        console.log("error:",error);
+        console.log("error:",error);                  
     }
 }
 connect();

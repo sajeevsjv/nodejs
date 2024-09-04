@@ -1,0 +1,32 @@
+body{
+    background-color: rgb(216, 216, 216);
+}
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: auto;
+}
+
+table,th,td{
+    border: 2px solid black;
+    border-collapse: collapse;
+    margin: auto;
+    padding: 8px;
+    height: 15px;
+    width: 500px;
+    
+}
+.table-container{
+    padding: 50px;
+}
+.container1{
+    border: 1px solid black;
+    width: 30vw;
+    padding: 20px;
+    margin: auto;
+}
+.h1-container{
+    width: 100px;
+    margin: auto;
+}
