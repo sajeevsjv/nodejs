@@ -42,9 +42,13 @@ const server = http.createServer( async(req, res) => {
         res.writeHead(200, {'content-type': 'text/html'});
         res.end(fs.readFileSync("../client/getallusers.html"));
     }
-    else if (parsed_url.pathname === '/viewpage.html') {
+    else if (parsed_url.pathname === '/getsingleuser.html') {
         res.writeHead(200, {'content-type': 'text/html'});
-        res.end(fs.readFileSync("../client/viewpage.html"));
+        res.end(fs.readFileSync("../client/getsingleuser.html"));
+    }
+    else if (parsed_url.pathname === '/edituser.html') {
+        res.writeHead(200, {'content-type': 'text/html'});
+        res.end(fs.readFileSync("../client/edituser.html"));
     }
     else if (parsed_url.pathname === '/style.css') {
         res.writeHead(200, {'content-type': 'text/css'});
@@ -67,12 +71,56 @@ const server = http.createServer( async(req, res) => {
             let datas = JSON.parse(body);
             console.log("datas :",datas);
 
-            
             console.log("name :",datas.name);
             console.log("email :",datas.email);
             console.log("Password :",datas.pass);
 
-            //save to a database
+    // serverside valiadation here
+    let namereg = /^[a-zA-Z]+([ '-][a-zA-Z]+)*$/;
+    let emailreg = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    let passreg = /^.{6,}$/;
+    
+    if( !datas.name && !datas.email && !datas.pass){
+        res.writeHead(400,{'Content-Type':'text/plain'});
+        res.end('name, email and password is required!')
+    }
+        
+    if (!datas.name) {
+        res.writeHead(400,{'Content-Type':'text/plain'});
+        res.end('name is required!');
+        return;
+
+    }
+    else if (!namereg.test(datas.name)) {
+        res.writeHead(400,{'Content-Type':'text/plain'});
+        res.end('Invalid name!')
+        return;
+    }
+
+    if (!datas.email) {
+        res.writeHead(400,{'Content-Type':'text/plain'});
+        res.end('email is required!');
+        return;
+    }
+    else if (!emailreg.test(datas.email)) {
+        res.writeHead(400,{'Content-Type':'text/plain'});
+        res.end('Invalid email!')
+        return;
+    }
+
+    if (!datas.pass) {
+        res.writeHead(400,{'Content-Type':'text/plain'});
+        res.end('name, email and password is required!');
+        return;
+    }
+    else if(!passreg.test(datas.pass)){
+        res.writeHead(400,{'Content-Type':'text/plain'});
+        res.end('name, email and password is required!');
+        return;
+}
+
+
+       //save to a database
        collection.insertOne({
         name : datas.name,
         email : datas.email,
@@ -137,6 +185,39 @@ const server = http.createServer( async(req, res) => {
 
         });
 
+    }
+
+    else if(parsed_url.pathname === '/user' && req.method === 'PUT'){
+        let body= '';
+        req.on('data',(chunks)=>{
+            body = body + chunks.toString();
+            console.log("body:",body);
+        })
+
+        req.on('end', async ()=>{
+            let datas = JSON.parse(body);
+            console.log("datas:",datas);
+            id = datas.id;
+            let name = datas.name;
+            let email = datas.email;
+            let password = datas.pass;
+            
+
+            console.log("id:",id);
+            console.log("typeof(id):",typeof(id));
+
+            let _id = new ObjectId (id);
+            console.log("_id:",_id);
+            console.log("typeof(_id):",typeof(_id));
+
+            let newdata = {name,email,password}
+
+            await collection.updateOne({_id},{$set :newdata})
+            res.writeHead(200,{'Content-Type':'text/plain'});
+            res.end("user updated susccessfully...")
+
+        
+        })
     }
 });
 
