@@ -1,80 +1,236 @@
-const http = require('http');
-const url = require('url');
-const PORT = 3000;
-const fs = require('fs');
-const querystring = require('querystring');
-const {MongoClient} = require('mongodb');
-let client = new MongoClient('mongodb://localhost:27017');
+const express = require('express');
+const app = express();
+const mongoose = require('mongoose')
+const dotenv = require('dotenv');
+dotenv.config();
 
-async function connect () {
+app.use(express.static('../client'));
+app.use(express.json());
+
+async function mongoconnect() {
     try{
-        await client.connect();
-        console.log("database connection established..")
+        await mongoose.connect(process.env.MONGODB_URI);
+        console.log("database connection established..");
     }
     catch(error){
-        console.log(error);
+        console.log("database connection errror:",error);
     }
     
 }
-connect();
+mongoconnect();
 
-const server = http.createServer( async(req,res)=>{
-    let db = client.db("products-dbs");
-    let collection = db.collection('products');
+let products = new mongoose.Schema({
+    url: {
+        type:String,
+        required:true
+    },
+    title: String,
+    price: Number
+});
 
-    const req_url = req.url;
-    console.log("req_url",req_url);
+let user = mongoose.model("products",products);
 
-    const parsed_url = url.parse(req_url);
+app.get('/test',(req,res,next)=>{
+    console.log("First middleware");
+    next();
+},
+(req,res,next)=>{
+    console.log("second middleware");
+    next();
+},
+(req,res)=>{
+    console.log("Third middleware");
+    res.status(200).send("success");
 
-    if(parsed_url.pathname === '/'){
-        res.writeHead(200,{'Content-Type':'text/html'})
-        res.end(fs.readFileSync("../client/index.html"))
-    }
-    else if(parsed_url.pathname === '/style.css'){
-        res.writeHead(200,{'Content-Type':'text/css'})
-        res.end(fs.readFileSync("../client/style.css"))
-    }
-    else if(parsed_url.pathname === '/script.js'){
-        res.writeHead(200,{'Content-Type':'text/script'})
-        res.end(fs.readFileSync("../client/script.js"))
-    }
-    else if(parsed_url.pathname === '/datas' && req.method === 'POST'){
-        // res.writeHead(200,{'Content-Type':'text/json'})
-        // res.end(fs.readFileSync("../client/data.json"))
+});
 
-        let response_data = fs.readFileSync("../client/data.json",'utf8');
-        json_data = JSON.parse(response_data);
+// response when submitting form data
+app.post("/submit",async (req,res)=>{
+
+    try{
+        let body = req.body;
+        console.log("body:",body);
+
+        let name = body.name;
+        let email = body.email;
+        let password = body.password;
+        
+        let namereg = /^[a-zA-Z]+([ '-][a-zA-Z]+)*$/;
+        let emailreg = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        let passreg = /^.{6,}$/;
+        
+        if( !name && !email && !password){
+            res.writeHead(400,{'Content-Type':'text/plain'});
+            res.end('name, email and password is required!')
+        }
+            
+        if (!name) {
+            res.status(400).send('name is required!');
+            return;
     
-
-        // inserting data into database
-        console.log("inserting data in to database");
-        await collection.insertMany(json_data)
-       .then((message)=>{
-        console.log(message);
-        res.writeHead(200,{'Content-Type':'text/plain'})
-        res.end("datas saved succesfully ..")
-       })
-       .catch((error)=>{
-        console.log("error_msg",error);
-        res.writeHead(400,{'content-Type':'text/plain'});
-        res.end(error.message ? error.message : "failed to upload data")
-       })
-    }
-    else if(parsed_url.pathname === "/submit" && req.method === 'GET'){
-        let Datas = await collection.find().toArray();
-        console.log("datas :",Datas);
-        let json_data = JSON.stringify(Datas);
+        }
+        else if (!namereg.test(name)) {
+            res.status(400).send('Invalid name!');
+            return;
+        }
     
-        res.writeHead(200,{'Content-Type':'application/json'});
-        res.end(json_data);
-
+        if (!email) {
+            res.status(400).send('email is required!');
+            return;
+        }
+        else if (!emailreg.test(email)) {
+            res.status(400).send('Invalid email!')
+            return;
+        }
+    
+        if (!password) {
+            res.status(400).send('name, email and password is required!');
+            return;
+        }
+        else if(!passreg.test(password)){
+            res.status(400).send('name, email and password is required!');
+            return;
     }
 
+    let count = await user.countDocuments({email});
+    if(count>0){
+        res.status(400).send("email already exists");
+        return;
+    }
+    
+    
+     let newuser = await  user.create(body);
+
+        
+        if(newuser){
+            res.status(200).send("user created succesfully..");
+            return;
+    
+        }
+        else{
+            res.status(400).send("failed to create the user");
+            return; 
+
+        }
+    }
+    catch(error){
+        console.log("error:",error);
+        res.status(400).send(error.message ? error.message : "something went wrong");
+    }
+    
+       
+});
+
+// return the submitted data when fetches using get
+app.get("/submit",async (req,res)=>{
+    let userdata = await user.find();
+    console.log("userdata :",userdata);
+
+    res.status(200).send(userdata);
+    
+});
+
+// return the user according to id
+app.post("/user",async (req,res)=>{
+    let body = req.body;
+    console.log("body:",body);
+
+    let id = body.id;
+    console.log("id:",id);
+    let obj_id = new mongoose.Types.ObjectId(id);
+    console.log("obj_id:",obj_id);
+    console.log("type od obj_id",typeof(obj_id));
+    let userdata = await user.findOne({_id:obj_id});
+    console.log("userdata:",userdata);
+    let json_data = JSON.stringify(userdata);
+
+    res.status(200).send(json_data);
+
+});
+
+app.put("/user",async (req,res)=>{
+    body = req.body;
+    console.log("body:",req.body);
+    let id = body.id;
+    console.log("typeof id",typeof(id));
+    let _id = new mongoose.Types.ObjectId(id);
+    let name = body.name;
+    let email = body.email;
+    let password = body.password;
+
+    let namereg = /^[a-zA-Z]+([ '-][a-zA-Z]+)*$/;
+    let emailreg = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    let passreg = /^.{6,}$/;
+    
+    if( !name && !email && !password){
+        res.status(400).send('name, email and password is required!');
+        return;
+    }
+        
+    if (!name) {
+        res.status(400).send('name is required!');
+        return;
+
+    }
+    else if (!namereg.test(name)) {
+        res.status(400).send('Invalid name!');
+        return;
+    }
+
+    if (!email) {
+        res.status(400).send('email is required!');
+        return;
+    }
+    else if (!emailreg.test(email)) {
+        res.status(400).send('Invalid email!')
+        return;
+    }
+
+    if (!password) {
+        res.status(400).send('name, email and password is required!');
+        return;
+    }
+    else if(!passreg.test(password)){
+        res.status(400).send('name, email and password is required!');
+        return;
+}
+
+let count = await user.countDocuments({email});
+if(count>0){
+    res.status(400).send("email already exists");
+    return;
+}
 
 
+
+    let newdata = {name,email,password};
+
+    await user.updateOne({_id},{$set : newdata});
+
+    res.status(200).send("user updated successfully");
+});
+
+app.delete('/user',async (req,res)=>{
+    let body = req.body;
+    body = req.body;
+    console.log("body:",req.body);
+    let id = body.id;
+    console.log("typeof id",typeof(id));
+    let _id = new mongoose.Types.ObjectId(id);
+    console.log("_id",_id);
+
+    await user.deleteOne({_id});
+    res.status(200).send("user deleted succesfully");
 })
 
-server.listen(PORT, '127.0.0.1', () => {
-    console.log(`listening on http://127.0.0.1:${PORT}`);
-});
+
+ 
+
+app.listen(process.env.PORT,()=>{
+    console.log(`server running at http://localhost:${process.env.PORT}`);
+})
+
+
+
+
+

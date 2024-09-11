@@ -161,21 +161,19 @@ async function loaddata() {
     })
     console.log("response:", response);
 
-    let parsed_response = await response.text();
-    console.log("parsed response:", parsed_response);
-    let json_response = JSON.parse(parsed_response);
+    let json_response = await response.json();
     console.log("name:", json_response.name);
 
     let viewuser = document.getElementById("viewuser");
     let content = `
- <h4>Name : ${json_response.name}
- <h4>Email : ${json_response.email}
- <h4>Password : ${json_response.password}
- <div><button id="btn" onclick = 'senduserdata("${json_response._id}")'>Edit Data</button></div>`
+<div img-div><img src="./images/depositphotos_119659092-stock-illustration-male-avatar-profile-picture-vector.jpg" alt=""></div>
+ <div class="text-div"><h4 class="muted">Name</h4> <h4>${json_response.name}</h4></div>
+ <div class="text-div"><h4 class="muted">Email</h4> <h4>${json_response.email}</h4></div>
+ <div class="text-div"><h4 class="muted">Password</h4> <h4>${json_response.password}</h4></div>
+ <div class="btn-div"><span><button class="btn1" onclick = 'senduserdata("${json_response._id}")'>Edit</button></span>
+ <span><button class="btn1" onclick ='deletedata("${json_response._id}")'>Delete</button></span></div>`
 
     viewuser.innerHTML = content;
-
-    edituser(json_response)
 
 
 
@@ -269,7 +267,8 @@ async function updateuser(event){
     if( !name && !email && !pass){
         nameerr.innerHTML = "name is required!";
         emailerr.innerHTML = "email is required!";
-        passerr.innerHTML = "password is required!"
+        passerr.innerHTML = "password is required!";
+        return;
     }
         
     if (!name) {
@@ -335,10 +334,46 @@ async function updateuser(event){
    }
    else{
     alert('something went wrong');
+    return;
    }
 
 
-   
+}
+
+// delete data
+async function deletedata(id){
+
+    console.log("id:",id);
+    
+
+    let response = await fetch("http://127.0.0.1:3000/user", {
+        method: "DELETE",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ "id": id })
+    })
+    console.log("response:", response);
+
+    let text_response = await response.text();
+
+    if(text_response){
+        alert(text_response);
+        window.location.href = "getallusers.html"
+        return;
+       }
+       else{
+        alert('something went wrong');
+       }
+    
 
 
 }
+
+function navigate(){
+
+    window.location.href = "getallusers.html";
+    
+}
+
+

@@ -120,7 +120,9 @@ const server = http.createServer( async(req, res) => {
 }
 
 
-       //save to a database
+
+
+       //save to database
        collection.insertOne({
         name : datas.name,
         email : datas.email,
@@ -218,6 +220,40 @@ const server = http.createServer( async(req, res) => {
 
         
         })
+    }
+
+    else if(parsed_url.pathname === '/user' && req.method === 'DELETE'){
+
+        let body= '';
+        req.on('data',(chunks)=>{
+            body = body + chunks.toString();
+            console.log("body:",body);
+        });
+
+        req.on('end',async ()=>{
+            let parsed_body =JSON.parse(body);
+            console.log("parsed_body:",parsed_body);
+
+            let id = parsed_body.id;
+            console.log("id:",id);
+            console.log("type of (_id):",typeof(id))
+
+            let _id = new ObjectId(id);
+            console.log("_id",_id);
+            console.log("typeof(_id):",typeof(_id));
+
+            await collection.deleteOne({_id});
+            
+
+
+            res.writeHead(200,{'Content-Type':'text/json'});
+            res.end("user deleted succesfully");
+
+        });
+
+
+
+
     }
 });
 

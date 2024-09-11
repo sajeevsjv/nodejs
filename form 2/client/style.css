@@ -26,7 +26,7 @@ nav a:hover{
 
  /* adduser.html */
  .main-container{
-    padding: 20px;
+    padding: 120px;
  }
 .form-container1{
     border: 1px solid rgb(194, 194, 194);
@@ -44,7 +44,7 @@ form{
     outline: none;
     width: 90%;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
 
 }
 .userform{
@@ -92,7 +92,7 @@ form input{
 
 table,th,td{
     border: 2px solid black;
-    border-collapse: collapse;
+    border-collapse: separate;
     margin: auto;
     padding: 8px;
     height: 15px;
@@ -104,20 +104,20 @@ table,th,td{
 }
 .container1{
     border: 1px solid black;
-    width: 30vw;
+    width: 40vw;
     padding: 20px;
     margin: auto;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     border: 1px solid rgb(194, 194, 194);
     border-radius: 8px;
+    display: flex;
 
 }
 .h1-container{
     display: flex;
     justify-content: center;
 }
-#btn{
-    margin-top: 20px;
+.btn1{
     background-color: blue;
     border: none;
     font-family: "Poppins", sans-serif;
@@ -125,6 +125,9 @@ table,th,td{
     padding: 10px;
     border-radius: 5px;
     color: white;
+    font-size: 14px;
+    letter-spacing: .7px;
+    margin-right: 4px;
 }
 .btn{
     border: 2px solid rgb(0, 47, 255);
@@ -140,6 +143,23 @@ table,th,td{
 .btn:hover{
     background-color: blue;
     color: white;
+}
+.btn-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.text-div{
+    display: flex;
+    flex-grow: .5;
+    flex-direction: column;
+    
+}
+.text-div h4{
+    margin: 0;
+}
+.muted{
+    color: gray;
 }
 .form-container{
     width: 30vw;
