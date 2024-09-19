@@ -20,7 +20,7 @@ async function mongoconnect() {
 mongoconnect();
 
 let usersschema = new mongoose.Schema({
-    name: {},
+    name: String,
     email: String,
     password:String,
     age: Number

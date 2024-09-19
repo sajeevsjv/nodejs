@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Lato", sans-serif;
+    font-style: normal;
+}
+
+
+
+/* index.html */
+.index-nav{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 20px;
+    background-color: #edf9ff;
+}
+
+.index-nav a{
+    font-size: 14px;
+    font-weight: 700;
+    color: rgb(153, 153, 153);
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: .5px;
+}
+.index-nav a:hover{
+    color: blue;
+}
+
+.main-container{
+    padding: 60px;
+ }
+.form-container1{
+    border: 1px solid rgb(194, 194, 194);
+    border-radius: 8px;
+    max-width: 35%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    
+}
+form{
+    display: flex;
+    outline: none;
+    width: 100%;
+    flex-direction: column;
+    gap: 20px;
+
+}
+.userform{
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+    color: rgb(116, 116, 116);
+    border-bottom: 2px solid blue;
+    letter-spacing: .5px;
+    margin: 0;
+}
+.userformdiv{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+form input{
+    border:1px solid blue;
+    border-radius: 4px;
+    padding: 10px;
+}
+form textarea{
+    border:1px solid blue;
+    border-radius: 4px;
+    padding: 10px;
+}
+.submit{
+    padding: 10px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: .5px;
+    background-color: blue;
+    color: white;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+}
+.form-row{
+    display: flex;
+    flex-direction: column;
+}
+
+/* viewpage */
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    align-items: center;
+    background-color: rgb(240, 238, 255);
+}
+.nav-links{
+    display: flex;
+    gap: 20px;
+}
+.nav-links a{
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: black;
+}
+.nav-links a:hover{
+    color: #72aec8;
+}
+
+.container-a {
+    display: grid;
+    grid-template-columns: repeat(4, 20%);
+    gap: 40px;
+    width: 100%;
+    justify-content: center;
+
+}
+.title{
+    font-size: 18px;
+    font-weight: normal;
+    text-transform: capitalize;
+    
+}
+.price{
+    font-size: 21px;
+    font-weight: 500;
+    color: #72aec8;
+}
+.box {
+    border: 1px solid #bdd1da;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 9px;
+    gap: 8px;
+    color: rgb(33 37 41);
+
+}
+
+
+
+.box:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+img {
+    width: 100%;
+    border-radius: 5px;
+}
+.hd{
+    padding-left: 6%;
+    margin: 30px 0px 20px 0px;
+}
+.hd span{
+    font-size: 32px;
+    font-weight: 500;
+    color: rgb(0, 0, 0);
+    text-transform: uppercase;
+}
+
+
+.section{
+    display: flex;
+    margin: auto;
+    gap: 15px;
+    width: 70%;
+    border-radius: 10px;
+    border: 1px solid rgb(253, 68, 68);
+    margin-top: 3%;
+    height: 40%;
+    padding: 20px;
+    
+}
+
+h4{
+    font-size: 28px;
+    font-weight: 500;
+}
+h5{
+    font-size: 18px;
+    font-weight: 400;
+    margin-top: 10px;
+    color: gray;
+}
+
+table,th,td{
+    border: 2px solid rgb(0, 0, 0);
+    border-collapse: collapse;
+    width: 90%;
+    
+}
+th,td{
+    padding: 8px;
+    
+}
+.col-title{
+    width: 25%;
+    
+}
+.col-url{
+    width: 0;
+}
+.col-description{
+    width: 100%;
+ 
+}
+.buttons-td{
+    display: flex;
+    gap: 10px;
+}
+.buttons-td button{
+    width: 60px;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    background-color: cyan;
+    border-radius: 8px;
+    
+}
