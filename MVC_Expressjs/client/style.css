@@ -4,13 +4,16 @@
   font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-style: normal;
+  box-sizing: border-box;
 }
+
+
 
 /* index.html */
 nav{
     display: flex;
     padding: 20px;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-bottom: 1px solid rgb(235, 235, 235);
     justify-content: center;
     align-items: center;
     gap: 30px;
@@ -18,38 +21,52 @@ nav{
 nav a{
     text-decoration: none;
     color: rgb(124, 124, 124);
-    font-weight: 600;
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: .5px;
 }
 nav a:hover{
     color: blue;
 }
 
  /* adduser.html */
- .main-container{
-    padding: 120px;
- }
+ 
 .form-container1{
-    border: 1px solid rgb(194, 194, 194);
-    border-radius: 8px;
-    max-width: 26%;
+    border-radius:  4px;
+    width: 50%;
     margin: auto;
     display: flex;
     justify-content: center;
-    padding: 30px;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    padding: 20px;
+    border: 1px solid #CAF438;
+    border-radius: 10px;
+    animation: scale 0.4s ease-in 0s 1 forwards alternate ;
+    background-color: #001925;
+}
+
+@keyframes scale {
+    from{
+      
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
     
 }
 form{
     display: flex;
     outline: none;
-    width: 90%;
+    width: 100%;
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
+    
+
 
 }
 .userform{
     text-align: center;
-    font-size: 30px;
+    font-size: 28px;
     font-weight: 700;
     color: rgb(116, 116, 116);
     border-bottom: 2px solid blue;
@@ -61,23 +78,61 @@ form{
     justify-content: center;
     margin-bottom: 15px;
 }
-
-form input{
-    border:1px solid blue;
+.login-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid red;
+    width: 60%;
+    margin: auto;
+}
+form input,textarea{
+    border: none;
+    border-bottom: 1px solid #CAF438;
+    outline: none;
     border-radius: 4px;
     padding: 10px;
+    outline: none;
+    color: white; 
+    background-color: aqua;
+    background-color: transparent;
+}
+.login-txt{
+    font-size: 30px;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: 2px;
+
+}
+form :placeholder-shown{
+    font-size: 14px;
+    color: white;
+
+}
+input::placeholder{
+    color: white;
+    font-weight: 200;
+    letter-spacing: 2px;
+    color: #ffffff;
 }
 .submit{
     padding: 10px;
     font-family: "Poppins", sans-serif;
-    font-weight: 500;
+    font-weight: 700;
     font-size: 16px;
     letter-spacing: .5px;
-    background-color: blue;
-    color: white;
-    border: none;
+    border: 1px solid #CAF438;
+    background-color: transparent;
+    color: rgb(255, 255, 255);
     outline: none;
     border-radius: 10px;
+    margin-top: 15px;
+}
+.submit:hover{
+    background-color: #CAF438;
+    color: black;
+
 }
 .form-row{
     display: flex;
@@ -90,49 +145,56 @@ form input{
     letter-spacing: 1px;
 }
 
-table,th,td{
-    border: 2px solid black;
-    border-collapse: collapse;
+table,td{
+    /* border: 2px solid black; */
     margin: auto;
     padding: 8px;
     height: 15px;
     width: 60vw;
+    background-color: rgb(255, 255, 255);
+    border-collapse: collapse;
     
 }
+table tr{
+  border: 1px solid rgb(0, 68, 255);
+}
+
 .table-container{
     padding: 50px;
 }
 .btn-div{
     display: flex;
     gap: 10px;
-    margin-left: 50px;
+    border: 1px solid rgb(206, 206, 206);
+    border-radius: 10px;
+    padding: 5px;
+    
 }
 .text-div{
     display: flex;
-    gap: 11px;
     flex-direction: column;
     
 }
-.text-div h4{
+.text-div-email{
+    color: gray;
+    padding: 0;
     margin: 0;
-    font-size: 20px;
-    font-weight: 500;
 }
+
+
 .muted{
     color: rgba(128, 128, 128, 0.562);
     font-size: 11px;
 }
 #viewuser{
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
     align-items: center;
-    gap: 15px;
+    
 }
-.line{
-    width: 2px;
-    height: 170px;
-    background-color:rgb(233, 233, 233);
-}
+
 img{
     width: 100%;
 }
@@ -140,35 +202,42 @@ img{
     width: 200px;
 }
 .container1{
-    border: 1px solid black;
-    width: 55%;
-    padding: 7px;
+    border: 1px solid rgb(49, 142, 248);
+    max-width: 34%;
+    padding: 18px;
     margin: auto;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-    border: 1px solid rgb(194, 194, 194);
     border-radius: 8px;
+    margin-top: 80px;   
+    animation: a1 0.3s ease-out 0s 1 forwards alternate;
+
 
 }
+
+@keyframes a1 {
+    from{
+       opacity: 0;
+       transform: translateY(-100px)
+    }
+    to{
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
 
 .h1-container{
     display: flex;
     justify-content: center;
 }
 .btn1{
-    background-color: rgba(0, 0, 255, 0.637);
     border: none;
-    font-family: "Poppins", sans-serif;
-    font-weight: 500;
-    padding: 10px;
-    border-radius: 5px;
-    color: white;
-    font-size: 14px;
-    letter-spacing: .7px;
-    margin-right: 4px;
-    width: 80px;
-    height: 63px;
-    font-size: 16px;
+    outline: none;
+    background-color: transparent;
 }
+ion-icon{
+    font-size: 20px;
+} 
 #red-btn{
     background-color: rgba(255, 0, 0, 0.616);
 }
@@ -212,3 +281,21 @@ img{
     border-bottom: 2px solid blue;
 
 }
+.profile{
+    position: absolute;
+    top: 17px;
+    left: 95%;
+    width: 40px;
+    height: 40px;
+    border: 1px solid blue;
+    border-radius: 50%;
+    padding: 3px;
+}
+.profile img{
+    width: 100%;
+    height: 100%;
+}
+
+
+
+ 

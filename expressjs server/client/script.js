@@ -223,10 +223,10 @@ async function edituser() {
 
     let name = document.getElementById('name');
     let email = document.getElementById('email');
-    let password = document.getElementById('pass');
+    // let password = document.getElementById('pass');
     name.value = json_response.name;
     email.value = json_response.email;
-    password.value = json_response.password;
+    // password.value = json_response.password;
 
 
 }

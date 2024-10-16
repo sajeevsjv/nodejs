@@ -4,34 +4,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./adduser.css">
+    <title>Add user</title>
 </head>
 
 <body>
-    <nav>
-        <a href="./adduser.html">ADD USER</a>
-        <a href="./getallusers.html">GET ALL USERS</a>
-     </nav>
-    <div class="main-container">
-        <div class="form-container1">
+    <div class="container">
+        <div class="form-container">
             <form onsubmit="adduser(event)" method="POST">
-                <div class="userformdiv"><span class="userform">AddUser</span></div>
-                <div class="form-row"><input type="text" name="name" id="name" placeholder="Enter your name"> <span
-                        class="clienterr" id="name-err"></span></div>
-                <div class="form-row"><input type="email" name="email" id="email" placeholder="Enter your email"> <span
+                <div><span class="login-txt">ADD.USER</span></div>
+                <div class="form-row"><input type="text" name="name" id="name" placeholder="Name"> <span
+                        class="clienterr" id="name-err"></span>
+                </div>
+                <div class="form-row"><input type="email" name="email" id="email" placeholder="Email"> <span
                         class="clienterr" id="email-err"></span>
                 </div>
-                <div class="form-row"><input type="password" name="password" id="pass"
-                        placeholder="Enter your password"> <span class="clienterr" id="pass-err"></span>
+
+        
+                <div class="form-row"> <textarea name="dp" id="dp" placeholder="Profile url" rows="5"
+                        cols="30"></textarea> <span class="clienterr" id="email-err"></span>
                 </div>
-                <button class="submit" type="submit">submit</button></span>
+
+                <div class="login-btn">
+                    <button> <ion-icon name="person-add"></ion-icon> Add
+                    </button>
+                </div>
+
             </form>
+            <div class="img-section">
+                <span>Add User</span>
+            </div>
         </div>
     </div>
 
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="./script.js"></script>
-
 </body>
 
 </html>

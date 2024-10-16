@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "roboto", sans-serif;
+}
+
+.navbar-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 20px 0px 20px;
+}
+
+.logo img {
+    width: 150px;
+    text-decoration: none;
+}
+
+.navbar-top-ls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 50%;
+}
+
+.navbar-top-rs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.navbar-top-rs select {
+    outline: none;
+    border: none;
+}
+
+.signin {
+    background-color: red;
+    padding: 7px;
+    outline: none;
+    border: none;
+    color: #F5F5F5;
+    font-weight: 500;
+    border-radius: 5px;
+    width: 70px;
+}
+
+.menu-btn {
+    font-size: 28px;
+}
+
+input {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid rgb(209, 209, 209);
+    outline: none;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px 10px 20px;
+    border-bottom: 1px solid #F5F5F5;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    font-size: 12px;
+
+}
+
+.banner {
+    display: flex;
+    justify-content: center;
+    background-color: #ffc7c7;
+    margin-top: 6px;
+    margin-bottom: 20px;
+}
+.banner img{
+    width: 87%;
+}
+
+.datas {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 18%);
+    justify-content: center;
+    gap: 35px;
+}
+
+.box {
+    width: 100%;
+    border-radius: 10px;
+}
+.box-1{
+    width: 80%;
+    padding: 8px;
+    margin : auto;
+    color: rgb(44, 44, 44);
+   
+}
+
+.thumbnail {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.thumbnail img {
+    width: 100%;
+    margin-bottom: 5px;
+    border-radius: 10px;
+}
+
+.bottom-text h4 {
+    font-size: 16px;
+    color: gray;
+    font-weight: normal;
+    line-height: 1.5;
+
+}

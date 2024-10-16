@@ -1,0 +1,50 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+/* index.html */
+nav{
+    border: 1px solid rgb(201, 201, 201);
+    display: flex;justify-content: center;
+}
+.logo img{
+    width: 200px;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(255, 197, 176);
+    background-position: -1px -224px;
+    background-size: cover;
+    height: 80vh;
+
+}
+.links{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    width: 50%;
+    height: 40vh;
+    border: 2px solid black;
+    margin-top: 60px;
+    backdrop-filter: blur(4px);
+
+}
+.links button{
+    height: 70px;
+    width: 200px;
+    font-size: 20px;
+    background-color: orangered;
+    border: none;
+}
+form{
+    display: flex;
+    flex-direction: column;
+}
+  
+

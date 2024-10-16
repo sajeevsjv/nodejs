@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="addmovie.css">
+  <title>Add Movie</title>
+</head>
+
+<body>
+  <div class="navbar-top">
+    <div class="navbar-top-ls">
+      <div class="logo"><img src="./images/bookmyshow_logo.png" alt=""></div>
+      <input type="text" class="search-field" name="search" id="search"
+        placeholder=" For Movies, Events, Plays, Sports and Activities" disabled>
+    </div>
+  </div>
+
+  <div class="form-container">
+
+    <form onsubmit="addMovie(event)" id="form" action="/add-movie" method="POST">
+      <div class="form-heading">
+        <h2>Add Movie</h2>
+      </div>
+      <input type="text" id="title" name="title" placeholder="Title" required>
+
+      <div class="genres-container">
+        <label for="">Genres</label>
+        <div class="genres">
+          <label id="genre-click" class="genre">
+            <input type="checkbox" name="genres" value="drama"> Drama
+          </label>
+          <label id="genre-click" class="genre">
+            <input type="checkbox" name="genres" value="action"> Action
+          </label>
+          <label id="genre-click" class="genre">
+            <input type="checkbox" name="genres" value="mystery"> Mystery
+          </label>
+          <label class="genre">
+            <input type="checkbox" name="genres" value="fantasy"> Fantasy
+          </label>
+          <label class="genre">
+            <input type="checkbox" name="genres" value="thriller"> Thriller
+          </label>
+          <label class="genre">
+            <input type="checkbox" name="genres" value="adventure"> Adventure
+          </label>
+          <label class="genre">
+            <input type="checkbox" name="genres" value="comedy"> Comedy
+          </label>
+          <label class="genre">
+            <input type="checkbox" name="genres" value="family"> Family
+          </label>
+          <label class="genre">
+            <input type="checkbox" name="genres" value="Horror"> Horror
+          </label>
+          <label class="genre">
+            <input type="checkbox" name="genres" value="Sci-fic"> Sci-fic
+          </label>
+          <label class="genre">
+            <input type="checkbox" name="genres" value="Sports"> Sports
+          </label>
+          <label class="genre">
+            <input type="checkbox" name="genres" value="Suspense"> Suspense
+          </label>
+          <label class="genre">
+            <input type="checkbox" name="genres" value="Biography"> Biography
+          </label>
+          <label class="genre">
+            <input type="checkbox" name="genres" value="Crime"> Crime
+          </label>
+          <label class="genre">
+            <input type="checkbox" name="genres" value="period"> Period
+          </label>
+          <!-- Add more genres as needed -->
+      </div>
+      </div>
+
+      <select name="certification" id="certification">
+        <option value="certification" disabled selected>Certification</option>
+        <option value="U">U</option>
+        <option value="UA">UA</option>
+        <option value="A">A</option>
+        <option value="S">S</option>
+      </select>
+
+      <input type="text" name="duration" id="duration" placeholder="Duration">
+
+      <div class="genres-container">
+        <label for="">Languages</label>
+        <div class="genres">
+            <label id="genre-click" class="genre">
+                <input type="checkbox" name="languages" value="English"> English
+            </label>
+            <label id="genre-click" class="genre">
+                <input type="checkbox" name="languages" value="Malayalam"> Malayalam
+            </label>
+            <label id="genre-click" class="genre">
+                <input type="checkbox" name="languages" value="Tamil"> Tamil
+            </label>
+            <label id="genre-click" class="genre">
+                <input type="checkbox" name="languages" value="Hindi"> Hindi
+            </label>
+            <label id="genre-click" class="genre">
+                <input type="checkbox" name="languages" value="Telugu"> Telugu
+            </label>
+            <label id="genre-click" class="genre">
+                <input type="checkbox" name="languages" value="Kannada"> Kannada
+            </label>
+            
+        </div>
+
+
+    </div>
+
+    <textarea name="about" id="about" rows="6" placeholder="About movie" cols="50"></textarea>
+    <textarea name="thumbnail" id="thumbnail" rows="6" placeholder="Thumnail base64" cols="50"></textarea>
+    <textarea name="background_image" id="background_image" rows="6" placeholder="background_image base64" cols="50"></textarea>
+
+
+
+    
+     
+
+
+      <div class="btn-div">
+        <button> <span>ADD</span>
+        </button>
+      </div>
+    </form>
+  </div>
+
+  
+
+
+
+  <script src="./script.js"></script>
+</body>
+
+</html>
