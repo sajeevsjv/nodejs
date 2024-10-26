@@ -25,7 +25,7 @@ module.exports = {
   down: (models, mongoose) => {
    
     return models.users.deleteMany({
-      _id: "670376db750aa1746937b4a7"
+      _id: "66f41c79384f7819814abf15"
     }).then(res => {
       // Prints "1"
       console.log(res.deletedCount);

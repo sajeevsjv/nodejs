@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>VideosApp</title>
+</head>
+
+<body onload="getAllVideos()">
+
+    <section class="container">
+        <nav>
+            <div class="logo">
+                <h3>Videos.App</h3>
+            </div>
+            <div class="nav-links">
+                <a href="">All videos</a>
+                <a href="">sports</a>
+                <a href="">music</a>
+                <a href="">movies</a>
+            </div>
+            <diiv class="btn-section">
+                <button type="button" class="button" onclick="navtoaddpg()">
+                    <span class="button__text">Add Video</span>
+                    <span class="button__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24"
+                            stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor"
+                            height="24" fill="none" class="svg">
+                            <line y2="19" y1="5" x2="12" x1="12"></line>
+                            <line y2="12" y1="12" x2="19" x1="5"></line>
+                        </svg></span>
+                </button>
+            </div>
+
+        </nav>
+
+        <div class="search-section">
+            <input type="text" name="search" placeholder="search videos ..">
+            <a class="btn" href="#">Search</a>
+        </div>
+        <div class="videos" id="videoss">
+             <div class="box">
+                <video width="100%" >
+                    <source
+                        src="../client/videos/AI technology welcome stock video _ Welcome video Magic _ 4K _ NonCopyrightedVideo.mp4"
+                        type="video/mp4">
+                </video>
+                <div class="info">
+                    <span>0.00</span>
+                    <span>360p</span>
+                </div>
+                <div class="title">ai technology, new era of science field.</div>
+            </div> 
+            <!-- <div class="box">
+                <video class="video" width="100%">
+                    <source
+                        src="../client/videos/AI technology welcome stock video _ Welcome video Magic _ 4K _ NonCopyrightedVideo.mp4"
+                        type="video/mp4">
+                    <source src="movie.ogg" type="video/ogg">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="info">
+                    <span>0.17</span>
+                    <span>360p</span>
+                </div>
+                <div class="title">ai technology, new era of science field.</div>
+            </div> -->
+
+
+
+        </div>
+
+    </section>
+    <script src="./script.js"></script>
+</body>
+
+</html>

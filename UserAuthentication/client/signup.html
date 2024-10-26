@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>SignUp</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-container">
+            <form>
+                <div><span class="login-txt">Sign.Up</span></div>
+                <div class="form-row"><input type="text" name="name" id="name" placeholder="Name"> <span
+                        class="clienterr" id="name-err"></span>
+                </div>
+                <div class="form-row"><input type="email" name="email" id="email" placeholder="Email"> <span
+                        class="clienterr" id="email-err"></span>
+                </div>
+
+                <div class="otp-section" id="otpsection">
+                    <input type="text" id="otp-input" maxlength="6" placeholder="Enter OTP" />
+                    <p id="timer">Time left: 1:00</p>
+                    <button id="submitBtn" disabled>Verify</button>
+                </div>
+
+                <div class="login-btn">
+                    <button id="signup" onclick="emailsend()"> <ion-icon name="person-add"></ion-icon> SignUp
+                    </button>
+                </div>
+
+
+            </form>
+            <div class="img-section">
+                <span>Add User</span>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="./script.js"></script>
+</body>
+
+</html>

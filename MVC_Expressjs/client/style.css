@@ -296,6 +296,16 @@ ion-icon{
     height: 100%;
 }
 
+.pass{
+    width: 100%;
+    text-align: right;
+}
+.forgot-pass{
+    font-size: 12px;
+    width: 100%;
+    color: rgb(187, 187, 187);
+
+}
 
 
  

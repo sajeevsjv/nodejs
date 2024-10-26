@@ -140,7 +140,7 @@ exports.createUser = async function (req, res) {
 
 exports.getAllUsers = async function(req, res) {
     try {
-        let usersData = await users.find().populate({ path: "user_type", select: "-__v" }).select("-__v");
+        let usersData = await users.find({ name: { $ne: "admin" } }).populate({ path: "user_type", select: "-__v" }).select("-__v");
         console.log("usersData : ", usersData);
     
         res.status(200).send(usersData);
@@ -242,6 +242,7 @@ exports.resetPassword = async (req,res) =>{
             message : "try another password"
         })
       res.status(response.statusCode).send(response);
+      return;
     }
     
 
@@ -274,6 +275,7 @@ exports.resetPassword = async (req,res) =>{
                 message : "Password reseted succesfully"
             })
             res.status(response.statusCode).send(response);
+            return;
             
             
         }
@@ -283,6 +285,7 @@ exports.resetPassword = async (req,res) =>{
                 message : "Failed to reset password"
             })
             res.status(response.statusCode).send(response);
+            return;
         }
     }
 

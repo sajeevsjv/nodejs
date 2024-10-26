@@ -137,7 +137,6 @@ async function getallusers() {
                 <tr>
                 <td>${datas[i].name}</td>
                 <td>${datas[i].email}</td>
-                <td>${datas[i].password}</td>
                 <td><button class="btn" onclick="sendid('${datas[i]._id}')">view</button>
                 <tr>`
 
@@ -404,6 +403,7 @@ async function updateuser(event) {
 
     if (text_response) {
         alert(text_response);
+        window.location.href = "getallusers.html"
         return;
     }
     else {

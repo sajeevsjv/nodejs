@@ -72,6 +72,8 @@ textarea::-webkit-input-placeholder { /* Chrome, Safari, Edge */
 .img-section{
     width: 50%;
     background-image: url("./images/blue_bg.png");
+    background-size: cover;
+    background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -107,7 +109,7 @@ textarea::-webkit-input-placeholder { /* Chrome, Safari, Edge */
 }
 .or{
     position: absolute;
-    top: -8px;
+    top: -13px;
     text-align: center;
     width: 100%;
    

@@ -5,6 +5,10 @@
     box-sizing: border-box;
     font-family: "Poppins",sans-serif;
 }
+body{
+    background-image: radial-gradient( circle 610px at 5.2% 51.6%,  rgba(5,8,114,1) 0%, rgba(7,3,53,1) 97.5% );
+
+}
 .container{
     display: flex;
     justify-content: center;
@@ -64,6 +68,8 @@ textarea::-webkit-input-placeholder { /* Chrome, Safari, Edge */
 .img-section{
     width: 50%;
     background-image: url("./images/blue_bg.png");
+    background-size: cover;
+    background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
